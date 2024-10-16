@@ -8,6 +8,14 @@
 
 A Vite plugin that records your project's module import graph in a JSON file.
 
+This plugin only produces the import graph data instead of including a visualization frontend and runs faster than those more integrated tools.
+
+You can use the import graph data according to your needs, such as:
+
+- Visualizing the import graph with tools like [D3.js](https://d3js.org/), [Graphviz](https://graphviz.org/), etc.
+- Analyzing the import graph to detect circular dependencies, dead code, etc.
+- Pulling all dependencies of certain entry modules recursively to perform test impact analysis, etc.
+
 ## Usage
 
 1. npm install
@@ -36,12 +44,20 @@ A Vite plugin that records your project's module import graph in a JSON file.
 
 ## Options
 
-- `filename` (default: `'import-graph.json'`): The filename to write the import graph into. Relative paths are resolved from project root.
-- `absoluteModuleIds` (default: `false`): Whether to output module IDs as absolute paths in the import graph. By default, module IDs are relative to project root.
-- `usePrefix` (default: `false`): Whether to add prefixes to virtual modules or npm packages. Currently supported prefixes:
+- `filename` (default: `'import-graph.json'`)
 
-  - `npm:`: npm packages
-  - `virtual:`: virtual modules
+  The filename to write the import graph into. Relative paths are resolved from project root.
+
+- `absoluteModuleIds` (default: `false`)
+
+  Whether to output module IDs as absolute paths in the import graph. By default, module IDs are relative to project root.
+
+- `usePrefix` (default: `false`)
+
+  Whether to add prefixes to virtual modules or npm packages. Currently supported prefixes:
+
+  - npm packages: `npm:vue`
+  - Virtual modules: `virtual:vite/modulepreload-polyfill.js`
 
 ## Output
 
@@ -61,6 +77,8 @@ The import graph is written to the specified file in JSON format. The keys are m
   "lodash": []
 }
 ```
+
+Note that paths inside the same npm packages are merged as the package level.
 
 ## License
 
