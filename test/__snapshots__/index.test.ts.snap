@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`basic functionalities > should handle \`filename\` correctly 1`] = `
+"{
+  "\\u0000vite/modulepreload-polyfill.js": [],
+  "\\u0000vite/preload-helper.js": [],
+  "/css/style.css": [],
+  "/index.html": [
+    "\\u0000vite/modulepreload-polyfill.js",
+    "/css/style.css",
+    "/index.js"
+  ],
+  "/index.js": [
+    "\\u0000vite/preload-helper.js",
+    "/update.js",
+    "@lukeed/uuid",
+    "nanoid"
+  ],
+  "/update.js": [],
+  "@lukeed/uuid": [],
+  "nanoid": []
+}"
+`;
+
+exports[`basic functionalities > should handle \`usePrefix\` correctly 1`] = `
+"{
+  "/css/style.css": [],
+  "/index.html": [
+    "/css/style.css",
+    "/index.js",
+    "virtual:vite/modulepreload-polyfill.js"
+  ],
+  "/index.js": [
+    "/update.js",
+    "npm:@lukeed/uuid",
+    "npm:nanoid",
+    "virtual:vite/preload-helper.js"
+  ],
+  "/update.js": [],
+  "npm:@lukeed/uuid": [],
+  "npm:nanoid": [],
+  "virtual:vite/modulepreload-polyfill.js": [],
+  "virtual:vite/preload-helper.js": []
+}"
+`;
+
+exports[`basic functionalities > should handle default options correctly 1`] = `
+"{
+  "\\u0000vite/modulepreload-polyfill.js": [],
+  "\\u0000vite/preload-helper.js": [],
+  "/css/style.css": [],
+  "/index.html": [
+    "\\u0000vite/modulepreload-polyfill.js",
+    "/css/style.css",
+    "/index.js"
+  ],
+  "/index.js": [
+    "\\u0000vite/preload-helper.js",
+    "/update.js",
+    "@lukeed/uuid",
+    "nanoid"
+  ],
+  "/update.js": [],
+  "@lukeed/uuid": [],
+  "nanoid": []
+}"
+`;

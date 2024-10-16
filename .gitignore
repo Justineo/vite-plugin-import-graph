@@ -9,3 +9,4 @@ lib-cov
 logs
 node_modules
 temp
+fixtures/**/pnpm-lock.yaml
