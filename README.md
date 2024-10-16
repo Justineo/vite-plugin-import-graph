@@ -8,6 +8,60 @@
 
 A Vite plugin that records your project's module import graph in a JSON file.
 
+## Usage
+
+1. npm install
+
+  ```bash
+  npm i -D vite-plugin-import-graph # pnpm add -D vite-plugin-import-graph
+  ```
+
+2. Add to your `vite.config.js` or `vite.config.ts`:
+
+  ```ts
+  // vite.config.ts
+  import { defineConfig } from 'vite'
+  import importGraph from 'vite-plugin-import-graph'
+
+  export default defineConfig({
+    plugins: [
+      importGraph({
+        filename: 'import-graph.json',
+        absoluteModuleIds: false,
+        usePrefix: false,
+      })
+    ]
+  })
+  ```
+
+## Options
+
+- `filename` (default: `'import-graph.json'`): The filename to write the import graph into. Relative paths are resolved from project root.
+- `absoluteModuleIds` (default: `false`): Whether to output module IDs as absolute paths in the import graph. By default, module IDs are relative to project root.
+- `usePrefix` (default: `false`): Whether to add prefixes to virtual modules or npm packages. Currently supported prefixes:
+
+  - `npm:`: npm packages
+  - `virtual:`: virtual modules
+
+## Output
+
+The import graph is written to the specified file in JSON format. The keys are module IDs and the values are arrays of imported module IDs.
+
+```json
+{
+  "/src/main.ts": [
+    "/src/foo.ts",
+    "/src/bar.ts"
+  ],
+  "/src/foo.ts": [
+    "/src/bar.ts",
+    "lodash"
+  ],
+  "/src/bar.ts": [],
+  "lodash": []
+}
+```
+
 ## License
 
 [MIT](./LICENSE) License © 2024-Present [GU Yiling](https://github.com/Justineo)
