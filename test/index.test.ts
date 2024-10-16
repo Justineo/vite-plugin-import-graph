@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import { build } from 'vite'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+
 import importGraphPlugin from '../src/index'
 
 const resolvePath = (path: string) => fileURLToPath(new URL(path, import.meta.url))
